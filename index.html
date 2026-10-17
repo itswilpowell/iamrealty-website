@@ -22,6 +22,9 @@ a{color:#D7262F}a:hover{color:#A81B23}
 input[type=range]{accent-color:#D7262F;width:100%;height:36px;margin:0;cursor:pointer;touch-action:pan-y}
 img,svg{max-width:100%}
 .page[hidden]{display:none!important}
+[data-svc-menu][hidden]{display:none!important}
+.iam-svc-item:hover,.iam-svc-item:focus-visible{background:#26262A}
+@media (max-width: 720px){.iam-svc-pos{left:0!important;transform:none!important;width:min(340px,calc(100vw - 72px))!important}}
 .iam-hero-media img{filter:drop-shadow(0 30px 40px rgba(0,0,0,0.35))}
 @media (max-width: 1100px){.iam-hero-media{position:relative!important;right:auto!important;bottom:auto!important;width:100%!important}}
 @keyframes iamTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -52,7 +55,17 @@ img,svg{max-width:100%}
 <span aria-hidden="true" style="width: 1px; height: 34px; background: #3F3F46"></span><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #B4B4BA; line-height: 1.5">Realty &amp;<br>Management</span>
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px; font-weight: 500">
-<a href="#services" style="color: #E4E4E7; text-decoration: none">Services</a>
+<div data-svc style="position: relative">
+<button type="button" aria-haspopup="true" aria-expanded="false" data-svc-toggle style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; background: none; border: 0; border-radius: 0; color: #E4E4E7; font-weight: 500; border-bottom: 2px solid transparent; font-family: inherit; font-size: 15px; cursor: pointer">Services <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div data-svc-menu hidden>
+<div class="iam-svc-pos" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 360px; padding-top: 12px; z-index: 50">
+<div style="background: #1C1C1F; border: 1px solid #2E2E33; border-radius: 20px; padding: 8px; box-shadow: 0 24px 48px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 2px">
+<a href="#/sellers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Sellers</strong><span style="font-size: 13px; color: #A1A1AA">Price, prep and sell for more</span></span></a><a href="#/buyers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.7 12.3 9.3-9.3"></path><path d="m16 7 3 3"></path><path d="m14 9 2 2"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Buyers &amp; Investors</strong><span style="font-size: 13px; color: #A1A1AA">Budget to keys in six clear steps</span></span></a><a href="#/asset-managers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Asset Managers</strong><span style="font-size: 13px; color: #A1A1AA">REO and portfolio services across SoCal</span></span></a>
+<a href="#contact" class="iam-svc-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 14px; border-top: 1px solid #2E2E33; border-radius: 0 0 14px 14px; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Get a free home valuation <span aria-hidden="true" style="color: #D7262F">→</span></a>
+</div>
+</div>
+</div>
+</div>
 <a href="#about" style="color: #E4E4E7; text-decoration: none">About</a>
 <a href="#tools" style="color: #E4E4E7; text-decoration: none">Calculator</a>
 <a href="#reviews" style="color: #E4E4E7; text-decoration: none">Reviews</a>
@@ -295,9 +308,20 @@ img,svg{max-width:100%}
 <span aria-hidden="true" style="width: 1px; height: 34px; background: #3F3F46"></span><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #B4B4BA; line-height: 1.5">Realty &amp;<br>Management</span>
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px; font-weight: 500">
-<a href="#/sellers" aria-current="page" style="color: #FFFFFF; text-decoration: none; font-weight: 700; border-bottom: 2px solid #D7262F">Selling</a>
-<a href="#/buyers" style="color: #E4E4E7; text-decoration: none">Buying</a>
-<a href="#/asset-managers" style="color: #E4E4E7; text-decoration: none">Asset managers</a>
+<div data-svc style="position: relative">
+<button type="button" aria-haspopup="true" aria-expanded="false" data-svc-toggle style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; background: none; border: 0; border-radius: 0; color: #FFFFFF; font-weight: 700; border-bottom: 2px solid #D7262F; font-family: inherit; font-size: 15px; cursor: pointer">Services <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div data-svc-menu hidden>
+<div class="iam-svc-pos" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 360px; padding-top: 12px; z-index: 50">
+<div style="background: #1C1C1F; border: 1px solid #2E2E33; border-radius: 20px; padding: 8px; box-shadow: 0 24px 48px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 2px">
+<a href="#/sellers" class="iam-svc-item" aria-current="page" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Sellers</strong><span style="font-size: 13px; color: #A1A1AA">Price, prep and sell for more</span></span><span style="margin-left: auto; font-size: 12px; color: #A1A1AA">You’re here</span></a><a href="#/buyers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.7 12.3 9.3-9.3"></path><path d="m16 7 3 3"></path><path d="m14 9 2 2"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Buyers &amp; Investors</strong><span style="font-size: 13px; color: #A1A1AA">Budget to keys in six clear steps</span></span></a><a href="#/asset-managers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Asset Managers</strong><span style="font-size: 13px; color: #A1A1AA">REO and portfolio services across SoCal</span></span></a>
+<a href="#/@contact" class="iam-svc-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 14px; border-top: 1px solid #2E2E33; border-radius: 0 0 14px 14px; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Get a free home valuation <span aria-hidden="true" style="color: #D7262F">→</span></a>
+</div>
+</div>
+</div>
+</div>
+<a href="#/@about" style="color: #E4E4E7; text-decoration: none">About</a>
+<a href="#/@tools" style="color: #E4E4E7; text-decoration: none">Calculator</a>
+<a href="#/@reviews" style="color: #E4E4E7; text-decoration: none">Reviews</a>
 <a href="tel:+13234810889" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #D7262F; color: #FFFFFF; text-decoration: none; font-weight: 600">(323) 481-0889</a>
 </div>
 </nav>
@@ -433,9 +457,20 @@ img,svg{max-width:100%}
 <span aria-hidden="true" style="width: 1px; height: 34px; background: #3F3F46"></span><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #B4B4BA; line-height: 1.5">Realty &amp;<br>Management</span>
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px; font-weight: 500">
-<a href="#/sellers" style="color: #E4E4E7; text-decoration: none">Selling</a>
-<a href="#/buyers" aria-current="page" style="color: #FFFFFF; text-decoration: none; font-weight: 700; border-bottom: 2px solid #D7262F">Buying</a>
-<a href="#/asset-managers" style="color: #E4E4E7; text-decoration: none">Asset managers</a>
+<div data-svc style="position: relative">
+<button type="button" aria-haspopup="true" aria-expanded="false" data-svc-toggle style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; background: none; border: 0; border-radius: 0; color: #FFFFFF; font-weight: 700; border-bottom: 2px solid #D7262F; font-family: inherit; font-size: 15px; cursor: pointer">Services <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div data-svc-menu hidden>
+<div class="iam-svc-pos" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 360px; padding-top: 12px; z-index: 50">
+<div style="background: #1C1C1F; border: 1px solid #2E2E33; border-radius: 20px; padding: 8px; box-shadow: 0 24px 48px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 2px">
+<a href="#/sellers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Sellers</strong><span style="font-size: 13px; color: #A1A1AA">Price, prep and sell for more</span></span></a><a href="#/buyers" class="iam-svc-item" aria-current="page" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.7 12.3 9.3-9.3"></path><path d="m16 7 3 3"></path><path d="m14 9 2 2"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Buyers &amp; Investors</strong><span style="font-size: 13px; color: #A1A1AA">Budget to keys in six clear steps</span></span><span style="margin-left: auto; font-size: 12px; color: #A1A1AA">You’re here</span></a><a href="#/asset-managers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Asset Managers</strong><span style="font-size: 13px; color: #A1A1AA">REO and portfolio services across SoCal</span></span></a>
+<a href="#/@contact" class="iam-svc-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 14px; border-top: 1px solid #2E2E33; border-radius: 0 0 14px 14px; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Get a free home valuation <span aria-hidden="true" style="color: #D7262F">→</span></a>
+</div>
+</div>
+</div>
+</div>
+<a href="#/@about" style="color: #E4E4E7; text-decoration: none">About</a>
+<a href="#/@tools" style="color: #E4E4E7; text-decoration: none">Calculator</a>
+<a href="#/@reviews" style="color: #E4E4E7; text-decoration: none">Reviews</a>
 <a href="tel:+13234810889" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #D7262F; color: #FFFFFF; text-decoration: none; font-weight: 600">(323) 481-0889</a>
 </div>
 </nav>
@@ -579,9 +614,20 @@ img,svg{max-width:100%}
 <span aria-hidden="true" style="width: 1px; height: 34px; background: #3F3F46"></span><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #B4B4BA; line-height: 1.5">Realty &amp;<br>Management</span>
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px; font-weight: 500">
-<a href="#/sellers" style="color: #E4E4E7; text-decoration: none">Selling</a>
-<a href="#/buyers" style="color: #E4E4E7; text-decoration: none">Buying</a>
-<a href="#/asset-managers" aria-current="page" style="color: #FFFFFF; text-decoration: none; font-weight: 700; border-bottom: 2px solid #D7262F">Asset managers</a>
+<div data-svc style="position: relative">
+<button type="button" aria-haspopup="true" aria-expanded="false" data-svc-toggle style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; background: none; border: 0; border-radius: 0; color: #FFFFFF; font-weight: 700; border-bottom: 2px solid #D7262F; font-family: inherit; font-size: 15px; cursor: pointer">Services <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div data-svc-menu hidden>
+<div class="iam-svc-pos" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 360px; padding-top: 12px; z-index: 50">
+<div style="background: #1C1C1F; border: 1px solid #2E2E33; border-radius: 20px; padding: 8px; box-shadow: 0 24px 48px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 2px">
+<a href="#/sellers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Sellers</strong><span style="font-size: 13px; color: #A1A1AA">Price, prep and sell for more</span></span></a><a href="#/buyers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.7 12.3 9.3-9.3"></path><path d="m16 7 3 3"></path><path d="m14 9 2 2"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Buyers &amp; Investors</strong><span style="font-size: 13px; color: #A1A1AA">Budget to keys in six clear steps</span></span></a><a href="#/asset-managers" class="iam-svc-item" aria-current="page" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Asset Managers</strong><span style="font-size: 13px; color: #A1A1AA">REO and portfolio services across SoCal</span></span><span style="margin-left: auto; font-size: 12px; color: #A1A1AA">You’re here</span></a>
+<a href="#/@contact" class="iam-svc-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 14px; border-top: 1px solid #2E2E33; border-radius: 0 0 14px 14px; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Get a free home valuation <span aria-hidden="true" style="color: #D7262F">→</span></a>
+</div>
+</div>
+</div>
+</div>
+<a href="#/@about" style="color: #E4E4E7; text-decoration: none">About</a>
+<a href="#/@tools" style="color: #E4E4E7; text-decoration: none">Calculator</a>
+<a href="#/@reviews" style="color: #E4E4E7; text-decoration: none">Reviews</a>
 <a href="tel:+13234810889" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #D7262F; color: #FFFFFF; text-decoration: none; font-weight: 600">(323) 481-0889</a>
 </div>
 </nav>
@@ -716,9 +762,20 @@ img,svg{max-width:100%}
 <span aria-hidden="true" style="width: 1px; height: 34px; background: #3F3F46"></span><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #B4B4BA; line-height: 1.5">Realty &amp;<br>Management</span>
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px; font-weight: 500">
-<a href="#/sellers" style="color: #E4E4E7; text-decoration: none">Selling</a>
-<a href="#/buyers" style="color: #E4E4E7; text-decoration: none">Buying</a>
-<a href="#/asset-managers" style="color: #E4E4E7; text-decoration: none">Asset managers</a>
+<div data-svc style="position: relative">
+<button type="button" aria-haspopup="true" aria-expanded="false" data-svc-toggle style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; background: none; border: 0; border-radius: 0; color: #E4E4E7; font-weight: 500; border-bottom: 2px solid transparent; font-family: inherit; font-size: 15px; cursor: pointer">Services <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div data-svc-menu hidden>
+<div class="iam-svc-pos" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 360px; padding-top: 12px; z-index: 50">
+<div style="background: #1C1C1F; border: 1px solid #2E2E33; border-radius: 20px; padding: 8px; box-shadow: 0 24px 48px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 2px">
+<a href="#/sellers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Sellers</strong><span style="font-size: 13px; color: #A1A1AA">Price, prep and sell for more</span></span></a><a href="#/buyers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.7 12.3 9.3-9.3"></path><path d="m16 7 3 3"></path><path d="m14 9 2 2"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Buyers &amp; Investors</strong><span style="font-size: 13px; color: #A1A1AA">Budget to keys in six clear steps</span></span></a><a href="#/asset-managers" class="iam-svc-item" style="display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #FFFFFF"><span aria-hidden="true" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #2A2A2F; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7262F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.3"><strong style="font-size: 15px; font-weight: 600">Asset Managers</strong><span style="font-size: 13px; color: #A1A1AA">REO and portfolio services across SoCal</span></span></a>
+<a href="#/@contact" class="iam-svc-item" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 14px; border-top: 1px solid #2E2E33; border-radius: 0 0 14px 14px; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Get a free home valuation <span aria-hidden="true" style="color: #D7262F">→</span></a>
+</div>
+</div>
+</div>
+</div>
+<a href="#/@about" style="color: #E4E4E7; text-decoration: none">About</a>
+<a href="#/@tools" style="color: #E4E4E7; text-decoration: none">Calculator</a>
+<a href="#/@reviews" style="color: #E4E4E7; text-decoration: none">Reviews</a>
 <a href="tel:+13234810889" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #D7262F; color: #FFFFFF; text-decoration: none; font-weight: 600">(323) 481-0889</a>
 </div>
 </nav>
@@ -819,10 +876,13 @@ img,svg{max-width:100%}
   function show(){
     var h=location.hash.replace(/^#/,'');
     if(h && h.charAt(0)!=='/'){ var el=current && current.querySelector('#'+CSS.escape(h)); if(el) el.scrollIntoView(); return; }
+    var jump=null; if(h.indexOf('/@')===0){ jump=h.slice(2); h='/'; }
     var key=routes[h]||'home';
     document.querySelectorAll('.page').forEach(function(p){ p.hidden = p.dataset.page!==key; if(!p.hidden) current=p; });
     document.title=current.dataset.title; metaDesc.content=current.dataset.desc; ogT.content=current.dataset.title; ogD.content=current.dataset.desc;
     window.scrollTo({top:0,left:0,behavior:'instant'});
+    if(jump){ var t=current.querySelector('#'+CSS.escape(jump)); if(t) setTimeout(function(){t.scrollIntoView({block:'start',behavior:'instant'});},30); }
+    closeMenus();
   }
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]'); if(!a) return;
@@ -830,6 +890,21 @@ img,svg{max-width:100%}
     var el=current && current.querySelector('#'+CSS.escape(h)); if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
   });
   window.addEventListener('hashchange',show); show();
+
+  // ---------- services drop-down ----------
+  function closeMenus(){ document.querySelectorAll('[data-svc]').forEach(function(w){ var m=w.querySelector('[data-svc-menu]'); if(m){ m.hidden=true; w.querySelector('[data-svc-toggle]').setAttribute('aria-expanded','false'); } }); }
+  var canHover=window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('[data-svc]').forEach(function(w){
+    var b=w.querySelector('[data-svc-toggle]'), m=w.querySelector('[data-svc-menu]');
+    function set(o){ m.hidden=!o; b.setAttribute('aria-expanded', o?'true':'false'); }
+    b.addEventListener('click',function(e){ e.stopPropagation(); var open = canHover.matches ? true : m.hidden; closeMenus(); set(open); });
+    w.addEventListener('mouseenter',function(){ if(canHover.matches) set(true); });
+    w.addEventListener('mouseleave',function(){ if(canHover.matches) set(false); });
+    w.addEventListener('focusout',function(e){ if(!w.contains(e.relatedTarget)) set(false); });
+    m.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+  });
+  document.addEventListener('click',function(e){ if(!e.target.closest('[data-svc]')) closeMenus(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ var open=document.querySelector('[data-svc-menu]:not([hidden])'); closeMenus(); if(open) open.closest('[data-svc]').querySelector('[data-svc-toggle]').focus(); } });
 
   // ---------- quick-start pills ----------
   var intents=['Buy','Sell','Rent','Invest','Get a valuation'], lower={'Buy':'buying','Sell':'selling','Rent':'rental','Invest':'investing','Get a valuation':'valuation'}, intent='Buy';
