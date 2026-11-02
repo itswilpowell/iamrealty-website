@@ -1,4 +1,4 @@
-ame: Update mortgage rates
+name: Update mortgage rates
 
 # Freddie Mac publishes new rates Thursdays at noon Eastern.
 # Runs Thursday afternoon, with a Friday backup, and can be run by hand from the Actions tab.
