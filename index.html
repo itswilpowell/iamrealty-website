@@ -104,7 +104,7 @@ img,svg{max-width:100%}
 <label style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 600; color: #D4D4D8">Phone or email
 <input type="text" name="phone_or_email" required placeholder="How should we reach you?" style="min-height: 50px; padding: 0 18px; border-radius: 999px; border: 1px solid #3F3F46; background: #141416; color: #FFFFFF; font: inherit; font-size: 15px"></label>
 <button type="submit" style="flex: 0 0 auto; min-height: 50px; padding: 0 26px; border-radius: 999px; border: 0; background: #D7262F; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Start my <span id="intentLower">buying</span> plan →</button>
-<p style="flex: 1 1 100%; margin: 0; font-size: 13px; color: #A1A1AA">By submitting, you agree to our <a href="#/privacy" style="color: #FFFFFF">Privacy Policy</a>. We never sell your information. Protected by hCaptcha (<a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener" style="color: #FFFFFF">Privacy</a> · <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener" style="color: #FFFFFF">Terms</a>).</p><div data-hcaptcha></div>
+<p style="flex: 1 1 100%; margin: 0; font-size: 13px; color: #A1A1AA">By submitting, you agree to our <a href="#/privacy" style="color: #FFFFFF">Privacy Policy</a>. We never sell your information.</p>
 <p role="status" data-w3f-status style="margin: 0; flex: 1 1 100%; font-size: 15px; font-weight: 600; color: #FFFFFF"></p>
 </form>
 </div>
@@ -257,7 +257,7 @@ img,svg{max-width:100%}
 <select name="property_type" style="min-height: 50px; padding: 0 16px; border-radius: 14px; border: 1px solid #D4D4D8; background: #FAFAFA; font: inherit; font-weight: 400"><option>Single-family home</option><option>Condo / Apartment</option><option>Multi-unit / Income property</option><option>Commercial / Office</option><option>Land</option></select></label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">How can we help?<textarea rows="4" name="message" style="padding: 14px 16px; border-radius: 14px; border: 1px solid #D4D4D8; background: #FAFAFA; font: inherit; font-weight: 400; resize: vertical"></textarea></label>
 <button type="submit" style="min-height: 56px; border-radius: 999px; border: 0; background: #18181B; color: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Send message →</button>
-<p style="margin: 0; font-size: 13px; color: #52525B; text-align: center">By sending, you agree to our <a href="#/privacy">Privacy Policy</a>. We never sell your information. Protected by hCaptcha (<a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener">Privacy</a> · <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener">Terms</a>).</p><div data-hcaptcha></div>
+<p style="margin: 0; font-size: 13px; color: #52525B; text-align: center">By sending, you agree to our <a href="#/privacy">Privacy Policy</a>. We never sell your information.</p>
 <p role="status" data-w3f-status style="margin: 0; font-size: 15px; font-weight: 600; color: #18181B; text-align: center"></p>
 </form>
 </div>
@@ -907,15 +907,8 @@ img,svg{max-width:100%}
   drawIntents();
 
 
-  // ---------- forms → Web3Forms (invisible hCaptcha + 3-second check) ----------
-  var HC_SITEKEY='50b2fe65-b00b-4b9e-ad62-3ba471098be2';   // Web3Forms' free hCaptcha key
+  // ---------- forms → Web3Forms (hidden honeypot + 3-second check) ----------
   var loadedAt=Date.now(), MIN_MS=3000;
-  window.iamCaptchaReady=function(){
-    document.querySelectorAll('form[data-w3f]').forEach(function(form){
-      var box=form.querySelector('[data-hcaptcha]');
-      if(box) form._hc=hcaptcha.render(box,{sitekey:HC_SITEKEY,size:'invisible'});
-    });
-  };
   document.querySelectorAll('form[data-w3f]').forEach(function(form){
     var status=form.querySelector('[data-w3f-status]'), btn=form.querySelector('button[type="submit"]');
     function fail(){ status.textContent='Sorry, something went wrong. Please call (323) 481-0889 or email Cynthia@IAmRealty.net.'; }
@@ -926,25 +919,18 @@ img,svg{max-width:100%}
       if(Date.now()-loadedAt < MIN_MS){                                   // faster than a human
         status.textContent='Please take a moment to review, then send again.'; return;
       }
-      var data=Object.fromEntries(new FormData(form)); delete data.botcheck; delete data['h-captcha-response']; delete data['g-recaptcha-response'];
+      var data=Object.fromEntries(new FormData(form)); delete data.botcheck; 
       if(data.email) data.replyto=data.email;
       btn.disabled=true; btn.style.opacity='0.6'; status.textContent='Sending…';
-      var token = (window.hcaptcha && form._hc!=null)
-        ? hcaptcha.execute(form._hc,{async:true}).then(function(r){ return r.response; })
-        : Promise.reject('captcha not loaded');
-      token
-        .then(function(t){
-          data['h-captcha-response']=t;
-          return fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
-        })
+      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
         .then(function(r){ return r.json(); })
         .then(function(j){
           if(!j.success) throw 0;
           status.textContent='Thank you! Cynthia will get back to you shortly.';
           form.reset(); if(form.querySelector('#qs-interest')){ intent='Buy'; drawIntents(); }
         })
-        .catch(function(err){ if(err==='challenge-closed'){ status.textContent='Please complete the quick check to send.'; } else fail(); })
-        .then(function(){ if(form._hc!=null && window.hcaptcha) hcaptcha.reset(form._hc); done(); });
+        .catch(fail)
+        .then(done);
     });
   });
 
@@ -1037,6 +1023,5 @@ img,svg{max-width:100%}
   });
 })();
 </script>
-<script src="https://js.hcaptcha.com/1/api.js?render=explicit&amp;onload=iamCaptchaReady" async defer></script>
 </body>
 </html>
