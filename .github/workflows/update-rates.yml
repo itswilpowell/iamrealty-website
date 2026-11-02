@@ -1,0 +1,54 @@
+ame: Update mortgage rates
+
+# Freddie Mac publishes new rates Thursdays at noon Eastern.
+# Runs Thursday afternoon, with a Friday backup, and can be run by hand from the Actions tab.
+# If the download ever fails, rates.json is left alone and the site keeps last week's numbers.
+on:
+  schedule:
+    - cron: "0 19 * * 4"
+    - cron: "0 15 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch latest rates
+        shell: python
+        run: |
+          import csv, io, json, urllib.request
+          URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US,MORTGAGE15US"
+          try:
+              req = urllib.request.Request(URL, headers={"User-Agent": "iamrealty-rates-bot"})
+              text = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
+          except Exception as e:
+              print("Download failed, keeping existing rates:", e)
+              raise SystemExit(0)
+          rows = []
+          for r in csv.DictReader(io.StringIO(text)):
+              date = r.get("observation_date") or r.get("DATE")
+              try:
+                  rows.append((date, float(r["MORTGAGE30US"]), float(r["MORTGAGE15US"])))
+              except (KeyError, TypeError, ValueError):
+                  continue
+          if len(rows) < 2:
+              print("Not enough data, keeping existing rates")
+              raise SystemExit(0)
+          (_, p30, p15), (week, r30, r15) = rows[-2], rows[-1]
+          data = {"week": week, "r30": r30, "c30": round(r30 - p30, 2),
+                  "r15": r15, "c15": round(r15 - p15, 2),
+                  "source": "Freddie Mac Primary Mortgage Market Survey"}
+          with open("rates.json", "w") as f:
+              json.dump(data, f, indent=2)
+              f.write("\n")
+          print("Wrote", data)
+      - name: Save if changed
+        run: |
+          git config user.name "rates-bot"
+          git config user.email "rates-bot@users.noreply.github.com"
+          git add rates.json
+          git diff --cached --quiet || (git commit -m "Update weekly mortgage rates" && git push)
